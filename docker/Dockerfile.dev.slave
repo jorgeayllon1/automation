@@ -1,0 +1,19 @@
+FROM almalinux/8-init:8.10-20240923
+
+LABEL maintainer="jorge@mail.fr"
+ARG TIMEZONE=Europe/Paris
+
+RUN dnf -y update && \
+    # TODO : Vérifier les paquets vraiment utiles
+    dnf -y install iproute sshpass bind-utils openssh-server python3.12 && \
+    dnf clean all && \
+    useradd -G wheel -s /bin/bash slave-user && \
+    echo 'slave-user:password' | chpasswd && \
+    rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
+
+RUN ssh-keygen -A
+
+EXPOSE 22
+USER root
+
+CMD [ "/usr/sbin/sshd","-D" ]

@@ -1,0 +1,23 @@
+FROM almalinux/8-base:8.10-20240923
+
+LABEL maintainer="jorge@mail.fr"
+ARG TIMEZONE=Europe/Paris
+
+RUN dnf -y update && \
+    dnf -y install iproute bind-utils tree openssh-clients sshpass python3.12 && \
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python3 get-pip.py && \
+    pip install ansible ansible-lint && \
+    dnf clean all && \
+    pip cache purge && \
+    useradd -G wheel -s /bin/bash ansible-user && \
+    echo 'ansible-user:password' | chpasswd && \
+    echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> /home/ansible-user/.bashrc && \
+    rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
+
+ENV ANSIBLE_CONFIG="~/code/src/.ansible.cfg"
+
+USER ansible-user
+WORKDIR /home/ansible-user
+
+CMD [ "tail","-f","/dev/null" ]

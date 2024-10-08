@@ -1,0 +1,33 @@
+services:
+  ansible:
+    image: master:1.0
+    container_name: master
+    build:
+      dockerfile: ./docker/Dockerfile.dev.master
+      context: .
+    networks:
+    - mynetwork
+    volumes:
+      - type: bind
+        source: ./src
+        target: /home/ansible-user/code/src
+  
+  slave:
+    image: slave:1.0
+    container_name: slave
+    privileged: true
+    build:
+      dockerfile: ./docker/Dockerfile.dev.slave
+      context: .
+    ports:
+      - 22:22
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+    # ipam:
+    #   driver: default
+    #   config:
+    #     - subnet: 162.168.56.0/24

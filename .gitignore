@@ -1,0 +1,11 @@
+# VSCode
+.vscode
+
+# Vagrant
+.vagrant
+
+# Binaries files
+*.tar*
+*.war
+
+tmp/
