@@ -12,17 +12,17 @@ services:
         source: ./src
         target: /home/ansible-user/code/src
   
-  slave:
-    image: slave:1.0
-    container_name: slave
-    privileged: true
-    build:
-      dockerfile: ./docker/Dockerfile.dev.slave
-      context: .
-    ports:
-      - 22:22
-    networks:
-      - mynetwork
+  # slave:
+  #   image: slave:1.0
+  #   container_name: slave
+  #   privileged: true
+  #   build:
+  #     dockerfile: ./docker/Dockerfile.dev.slave
+  #     context: .
+  #   ports:
+  #     - 22:22
+  #   networks:
+  #     - mynetwork
 
 networks:
   mynetwork:
