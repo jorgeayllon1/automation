@@ -1,0 +1,95 @@
+---
+- name: Ping
+  ansible.builtin.ping:
+
+# - name: 1 - Installation de java
+#   ansible.builtin.dnf:
+#     name: '{{ wildfly_java_package }}'
+#     state: present
+
+# - name: 2 - Création du groupe
+#   ansible.builtin.group:
+#     name: wildfly
+#     state: present
+
+# - name: 2 - Création de l'utilisateur
+#   ansible.builtin.user:
+#     name: wildfly
+#     group: wildfly
+#     state: present
+#     home: /opt/wildfly
+#     shell: /sbin/nologin
+#     comment: Utilisateur pour le service wildfly
+
+# - name: 3 - Mise en place des fichiers wildfly
+#   ansible.builtin.unarchive:
+#     src: '{{ wildfly_tar_name }}'
+#     dest: /opt
+#     group: wildfly
+#     owner: wildfly
+
+# - name: 4 - Mise en place de la configuration global
+#   ansible.builtin.copy:
+#     src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.conf
+#     remote_src: true
+#     dest: /etc/wildfly/
+#     group: wildfly
+#     owner: wildfly
+#     mode: '0644'
+
+# - name: 4 - Mise en place de l'utilisateur admin standalone wildfly
+#   ansible.builtin.template:
+#     src: mgmt-users.properties.j2
+#     dest: /opt/wildfly/standalone/configuration/mgmt-users.properties
+#     owner: wildfly
+#     group: wildfly
+#     mode: '0600'
+
+# - name: 4 - Mise en place de l'utilisateur admin domain wildfly
+#   ansible.builtin.template:
+#     src: mgmt-users.properties.j2
+#     dest: /opt/wildfly/domain/configuration/mgmt-users.properties
+#     owner: wildfly
+#     group: wildfly
+#     mode: '0600'
+
+# - name: 4 - Mise en place du script de lancement
+#   ansible.builtin.copy:
+#     src: /opt/wildfly/docs/contrib/scripts/systemd/launch.sh
+#     remote_src: true
+#     dest: /opt/wildfly/bin/
+#     group: wildfly
+#     owner: wildfly
+#     mode: '0755'
+
+# - name: 4 - Déployement de l'application
+#   ansible.builtin.copy:
+#     src: '{{ wildfly_app_to_deploy }}'
+#     dest: /opt/wildfly/standalone/deployments
+#     group: wildfly
+#     owner: wildfly
+#     mode: '0644'
+
+# - name: 6 - Mise en place du fichier service
+#   ansible.builtin.copy:
+#     src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service
+#     remote_src: true
+#     dest: /etc/systemd/system/
+#     group: wildfly
+#     owner: wildfly
+#     mode: '0755'
+
+# - name: 7 - Lancement du service
+#   ansible.builtin.service:
+#     name: wildfly
+#     state: started
+#     enabled: true
+
+# - name: 8 - Configuration du firewalld
+#   ansible.posix.firewalld:
+#     port: 8080/tcp
+#     permanent: true
+#     state: enabled
+
+# - name: 8 - Reboot
+#   ansible.builtin.reboot:

@@ -1,0 +1,6 @@
+wildfly_tar_name: wildfly-26.1.3.Final.tar.gz
+wildfly_admin_name: admin
+wildfly_admin_password: password
+wildfly_digest_format: "{{ wildfly_admin_name }}:ManagementRealm:{{ wildfly_admin_password }}"
+wildfly_app_to_deploy: sample.war
+wildfly_java_package: java-1.8.0-openjdk

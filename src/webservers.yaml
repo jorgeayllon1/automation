@@ -1,0 +1,7 @@
+---
+# file: webservers.yml
+- name: Test
+  hosts: webservers
+  become: true
+  roles:
+    - wildfly
