@@ -1,5 +1,5 @@
 {
-	"name": "Dev container file",
+	"name": "Ansible master",
 	"dockerComposeFile":"../docker-compose.dev.yaml",
 	"service": "ansible",
 	"workspaceFolder": "/home/ansible-user/code/src",
