@@ -1,0 +1,4 @@
+postgres_yum_repo_name: postgres-test
+postgres_yum_repo_url: http://simple-nexus.domain.fr/repository/postgres-test
+postgres_package_name: postgresql16-server
+postgres_service_name: postgresql-16

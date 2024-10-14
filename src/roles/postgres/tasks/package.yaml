@@ -1,0 +1,22 @@
+---
+- name: Configure yum repo
+  ansible.builtin.yum_repository:
+    name: '{{ postgres_yum_repo_name }}'
+    description: default yum repo
+    baseurl: '{{ postgres_yum_repo_url }}'
+    gpgcheck: false
+    enabled: true
+    state: present
+
+- name: Install minimal packages
+  ansible.builtin.yum:
+    name:
+      - '{{ postgres_package_name }}'
+    state: present
+    update_cache: true
+
+- name: Remove repository (and clean up left-over metadata)
+  ansible.builtin.yum_repository:
+    name: '{{ postgres_yum_repo_name }}'
+    state: absent
+  notify: yum-clean-metadata

@@ -1,0 +1,17 @@
+---
+- name: Checking postgres
+  ansible.builtin.yum:
+    name: '{{ postgres_package_name }}'
+    update_cache: true
+
+# TODO : configurer postgres
+# - name: Configure postgres
+
+- name: Creating initial database
+  ansible.builtin.command: /usr/pgsql-16/bin/postgresql-16-setup initdb
+
+- name: Starting postgres service
+  ansible.builtin.service:
+    name: '{{ postgres_service_name }}'
+    state: started
+    enabled: true
