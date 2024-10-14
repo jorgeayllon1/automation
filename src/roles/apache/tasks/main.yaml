@@ -1,0 +1,8 @@
+---
+- name: Install apache packages
+  ansible.builtin.import_tasks:
+    file: package.yaml
+
+- name: Configure apache
+  ansible.builtin.import_tasks:
+    file: apache.yaml

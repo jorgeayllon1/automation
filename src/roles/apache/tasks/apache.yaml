@@ -1,0 +1,20 @@
+---
+- name: Checking apache
+  ansible.builtin.yum:
+    name: httpd
+    update_cache: true
+
+- name: Configure apache
+  ansible.builtin.copy:
+    src: website.domain.conf
+    dest: /etc/httpd/conf.d/website.domain.conf
+    # TODO: utiliser un sa
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Starting apache service
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: true

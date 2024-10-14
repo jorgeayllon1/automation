@@ -1,0 +1,2 @@
+apache_yum_repo_name: apache-test
+apache_yum_repo_url: http://simple-nexus.domain.fr/repository/apache-test
