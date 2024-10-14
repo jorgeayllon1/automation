@@ -9,3 +9,6 @@
 *.war
 
 tmp/
+
+# Python
+__pycache__/

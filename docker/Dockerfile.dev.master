@@ -7,7 +7,7 @@ RUN dnf -y update && \
     dnf -y install iproute bind-utils tree openssh-clients sshpass python3.12 && \
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 get-pip.py && \
-    pip install ansible ansible-lint && \
+    pip install ansible-core==2.16.12 ansible-lint==24.9.2 && \
     dnf clean all && \
     pip cache purge && \
     useradd -G wheel -s /bin/bash ansible-user && \
