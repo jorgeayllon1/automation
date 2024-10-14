@@ -1,0 +1,8 @@
+---
+- name: Install yum packages
+  ansible.builtin.import_tasks:
+    file: package.yaml
+
+- name: Configure chrony
+  ansible.builtin.import_tasks:
+    file: chrony.yaml

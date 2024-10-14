@@ -1,0 +1,19 @@
+---
+- name: Checking chrony
+  ansible.builtin.yum:
+    name: chrony
+    update_cache: true
+
+- name: Configure chrony
+  ansible.builtin.copy:
+    src: chrony.conf
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Starting chronyd service
+  ansible.builtin.service:
+    name: chronyd
+    state: restarted
+    enabled: true
