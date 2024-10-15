@@ -4,9 +4,13 @@
     name: chrony
     update_cache: true
 
+# TODO : Faire du déclaratif
+- name: Set timezone
+  command: timedatectl set-timezone Europe/Paris
+
 - name: Configure chrony
-  ansible.builtin.copy:
-    src: chrony.conf
+  ansible.builtin.template:
+    src: chrony.conf.j2
     dest: /etc/chrony.conf
     owner: root
     group: root
