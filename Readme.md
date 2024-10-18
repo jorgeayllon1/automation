@@ -10,5 +10,5 @@ Utiliser VsCode depuis le devcontainer.
 Depuis le répertoire src
 ```pwsh
 vagrant up
-vagrant ssh vm1
+vagrant ssh master
 ```
