@@ -15,3 +15,4 @@
     name: '{{ postgres_service_name }}'
     state: started
     enabled: true
+  ignore_errors: '{{ ansible_check_mode }}'
