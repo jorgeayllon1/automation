@@ -1,3 +1,8 @@
 ---
 # file: site.yaml
-- import_playbook: webservers.yaml
+- name: Web
+  ansible.builtin.import_playbook: webservers.yaml
+- name: Loadbalancer
+  ansible.builtin.import_playbook: lbservers.yaml
+- name: Database
+  ansible.builtin.import_playbook: dbservers.yaml

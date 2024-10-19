@@ -1,0 +1,7 @@
+---
+- name: Database
+  hosts: dbservers
+  become: true
+  roles:
+    - common
+    - postgres

@@ -1,6 +1,6 @@
 ---
 # file: webservers.yml
-- name: Test
+- name: Web
   hosts: webservers
   become: true
   roles:

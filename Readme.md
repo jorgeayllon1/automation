@@ -12,7 +12,6 @@ Utiliser VsCode depuis le devcontainer.
 - Virtualbox 7.0.20
 - Vagrant
 ### Start
-Depuis le répertoire src
 ```pwsh
 vagrant plugin install vagrant-vbguest
 vagrant up

@@ -1,0 +1,7 @@
+---
+- name: Loadbalancer
+  hosts: lbservers
+  become: true
+  roles:
+    - common
+    - apache
