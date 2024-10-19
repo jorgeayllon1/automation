@@ -7,10 +7,15 @@
 ## Ansible
 Utiliser VsCode depuis le devcontainer. 
 ## VM
+### Prérequis
+- Windows 10/11
+- Virtualbox 7.0.20
+- Vagrant
+### Start
 Depuis le répertoire src
 ```pwsh
+vagrant plugin install vagrant-vbguest
 vagrant up
-vagrant ssh master
 ```
 
 # Limitations
