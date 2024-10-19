@@ -18,3 +18,4 @@
     name: httpd
     state: started
     enabled: true
+  ignore_errors: '{{ ansible_check_mode }}'

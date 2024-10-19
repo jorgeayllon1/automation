@@ -13,6 +13,6 @@ python3 -m pip install ansible-core==2.16.12 ansible-lint==24.9.2
 dnf clean all
 python3 -m pip cache purge
 
-echo 'alias ll="ls --group-directories-first -phAl --color=auto"' >> ~/.bashrc
+echo 'alias ll="ls --group-directories-first -phal --color=auto"' >> ~/.bashrc
 
 rm -rf /etc/localtime && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
