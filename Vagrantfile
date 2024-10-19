@@ -10,11 +10,11 @@ Vagrant.configure("2") do |config|
         master.vm.box_version = box_version
         master.vm.hostname = "master"
         master.vm.network "private_network", ip: "192.168.56.100"
-        master.vm.synced_folder '.', '/home/vagrant/src/', mount_options: ["dmode=700", "fmode=600", "uid=1000", "gid=1000"]
+        master.vm.synced_folder '.', '/home/vagrant/workspace/', mount_options: ["dmode=700", "fmode=600", "uid=1000", "gid=1000"]
         master.vm.provider "virtualbox" do |vb|
             vb.memory = 1024
             vb.cpus = 2
-            master.vm.provision "shell", path: "./script/install-ansible.sh"
+            master.vm.provision "shell", path: "./src/script/install-ansible.sh"
             master.ssh.port = 2222
             master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
         end
@@ -24,13 +24,14 @@ Vagrant.configure("2") do |config|
         slave.vm.box_version = box_version
         slave.vm.hostname = "slave"
         slave.vm.network "private_network", ip: "192.168.56.101"
+        slave.vm.synced_folder '.', '/vagrant', disabled: true
         slave.vm.provider "virtualbox" do |vb|
             vb.memory = 512
             vb.cpus = 1
-            slave.vm.provision "shell", path: "./script/install-ansible-requirements.sh"
+            slave.vm.provision "shell", path: "./src/script/install-ansible-requirements.sh"
             slave.ssh.port = 2223
             slave.vm.network "forwarded_port", guest: 22, host: 2223, id: "ssh"
         end
     end
-    config.vm.provision "shell", path: "./script/default-config.sh"
+    config.vm.provision "shell", path: "./src/script/default-config.sh"
 end
