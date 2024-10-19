@@ -4,7 +4,7 @@ TIMEZONE=Europe/Paris
 
 dnf -y update
 
-sudo dnf -y install iproute bind-utils tree openssh-clients sshpass python3.12
+sudo dnf -y install iproute git bind-utils tree openssh-clients sshpass python3.12
 curl -k https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 rm get-pip.py
