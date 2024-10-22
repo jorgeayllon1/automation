@@ -8,7 +8,7 @@ sudo dnf -y install iproute git bind-utils tree openssh-clients sshpass python3.
 curl -k https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 rm get-pip.py
-python3 -m pip install ansible-core==2.16.12 ansible-lint==24.9.2
+python3 -m pip install ansible-core==2.16.12 ansible-lint==24.9.2 pywinrm
 ansible-galaxy collection install ansible.windows
 
 dnf clean all
