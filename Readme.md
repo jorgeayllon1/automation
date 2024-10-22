@@ -28,3 +28,6 @@ Surtout sur des configurations utilisant des vpn, des pare-feux et des commutate
 
 Ce qui fait que Hyper-V prend le contrôle de la virtualisation et Virtualbox doit virtualiser sur une interface Hyper-V. Cela diminue les performances (50%?).  
 Cependant, vu la faible demande en ressource de ce projet, cela n'a pas d'impact.
+
+# Sources
+[Virtualbox download](https://download.virtualbox.org/virtualbox/7.0.20)
