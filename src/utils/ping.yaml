@@ -4,3 +4,8 @@
   tasks:
     - name: Ping
       ansible.builtin.ping:
+      when: ansible_facts['os_family'] == 'RedHat'
+
+    - name: PingWin
+      ansible.windows.win_ping:
+      when: ansible_facts['os_family'] == 'Windows'
