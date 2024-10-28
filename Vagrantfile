@@ -12,43 +12,44 @@ Vagrant.configure("2") do |config|
         master.vm.box_version = linux_box_version
         master.vm.hostname = "master"
         master.vm.network "private_network", ip: "192.168.56.100"
+        master.vm.provision "shell", path: "./src/script/default-config.sh"
         master.vm.synced_folder '.', '/home/vagrant/workspace/', mount_options: ["dmode=700", "fmode=600", "uid=1000", "gid=1000"]
         master.vm.provider "virtualbox" do |vb|
             vb.memory = 2048
             vb.cpus = 2
+        end
         master.vm.provision "shell", path: "./src/script/install-ansible.sh"
         master.ssh.port = 2222
         master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
-        end
     end
     config.vm.define "slave" do |slave|
         slave.vm.box = linux_base_box
         slave.vm.box_version = linux_box_version
         slave.vm.hostname = "slave"
         slave.vm.network "private_network", ip: "192.168.56.101"
+        slave.vm.provision "shell", path: "./src/script/default-config.sh"
         slave.vm.synced_folder '.', '/vagrant', disabled: true
         slave.vm.provider "virtualbox" do |vb|
             vb.memory = 2048
             vb.cpus = 1
-            slave.vm.provision "shell", path: "./src/script/install-ansible-requirements.sh"
-            slave.ssh.port = 2223
-            slave.vm.network "forwarded_port", guest: 22, host: 2223, id: "ssh"
         end
+        slave.vm.provision "shell", path: "./src/script/install-ansible-requirements.sh"
+        slave.ssh.port = 2223
+        slave.vm.network "forwarded_port", guest: 22, host: 2223, id: "ssh"
     end
-    config.vm.provision "shell", path: "./src/script/default-config.sh"
     config.vm.define "principal" do |principal|
         principal.vm.box = windows_base_box
         principal.vm.box_version = windows_box_version
         principal.vm.hostname = "principal"
         principal.vm.network "private_network", ip: "192.168.56.102"
+        principal.vm.provision "shell", path: "./src/script/default-config.ps1"
         principal.vm.synced_folder '.', '/vagrant', disabled: true
         principal.vm.provider "virtualbox" do |vb|
             vb.memory = 4096
             vb.cpus = 2
+        end
         principal.ssh.port = 2224
         principal.winrm.username = 'Vagrant'
         principal.winrm.password = 'vagrant'
-        # SCRIPT : Désactivation de rdp, ipv6
-        end
     end
 end
