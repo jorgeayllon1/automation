@@ -6,3 +6,5 @@
   ansible.builtin.import_playbook: lbservers.yaml
 - name: Database
   ansible.builtin.import_playbook: dbservers.yaml
+- name: DomainController
+  ansible.builtin.import_playbook: dcservers.yaml

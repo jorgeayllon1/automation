@@ -1,0 +1,5 @@
+---
+- name: DomainController
+  hosts: dnsserver
+  roles:
+    - dns

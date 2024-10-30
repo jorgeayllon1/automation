@@ -1,0 +1,9 @@
+dns_hosts:
+  - name: master
+    ip: 192.168.56.100
+  - name: slave
+    ip: 192.168.56.101
+  - name: principal
+    ip: 192.168.56.102
+
+dns_zone: vbox.example.com

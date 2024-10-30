@@ -6,5 +6,7 @@ linux:
           hosts:
             192.168.56.101
 windows:
-  hosts:
-    192.168.56.102
+  children:
+    dnsserver:
+      hosts:
+        192.168.56.102

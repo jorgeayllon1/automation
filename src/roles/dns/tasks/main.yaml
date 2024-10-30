@@ -1,0 +1,26 @@
+---
+- name: Add DNS Zone
+  community.windows.win_dns_zone:
+    name: "{{ dns_zone }}"
+    state: present
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: Add DNS Hosts
+  community.windows.win_dns_record:
+    zone: "{{ dns_zone }}"
+    name: "{{ item.name }}"
+    type: A
+    value: "{{ item.ip }}"
+    state: present
+  loop: "{{ dns_hosts }}"
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: Add DNS PTR Records
+  community.windows.win_dns_record:
+    zone: "{{ dns_zone }}"
+    name: "{{ item.ip | ipaddr('reverse') }}"
+    type: PTR
+    value: "{{ item.name }}.{{ dns_zone }}"
+    state: present
+  loop: "{{ dns_hosts }}"
+  ignore_errors: '{{ ansible_check_mode }}'
